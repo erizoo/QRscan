@@ -29,7 +29,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="159dp"
-            android:background="@drawable/my_edit_text_border"
+            android:background="@layout/my_edit_text_border"
             android:ems="10"
             android:hint="@string/with_code"
             android:inputType="textPersonName"
