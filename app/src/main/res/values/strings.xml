@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">QRScan</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="change_code">sdg</string>
+    <string name="edit_code">Введите код доступа</string>
+    <string name="with_code">Войти</string>
+    <string name="without_code">Войти без кода</string>
+    <string name="description">Без кода доступа приложения работает как обычный сканер QR кодов.</string>
+</resources>
