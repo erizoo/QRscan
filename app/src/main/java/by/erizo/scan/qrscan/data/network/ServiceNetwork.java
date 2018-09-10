@@ -1,10 +1,9 @@
 package by.erizo.scan.qrscan.data.network;
 
-
-import by.erizo.scan.qrscan.data.ResponseModel.ResponseCountry;
+import by.erizo.scan.qrscan.data.ResponseModel.ResponseScan;
 import io.reactivex.Observable;
 
 public interface ServiceNetwork {
 
-    Observable<ResponseCountry> checkCountry();
+    Observable<ResponseScan> sendNumber(String text, String contents);
 }

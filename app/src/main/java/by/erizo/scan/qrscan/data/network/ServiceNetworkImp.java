@@ -2,7 +2,7 @@ package by.erizo.scan.qrscan.data.network;
 
 import javax.inject.Inject;
 
-import by.erizo.scan.qrscan.data.ResponseModel.ResponseCountry;
+import by.erizo.scan.qrscan.data.ResponseModel.ResponseScan;
 import io.reactivex.Observable;
 
 public class ServiceNetworkImp implements ServiceNetwork {
@@ -16,9 +16,8 @@ public class ServiceNetworkImp implements ServiceNetwork {
         this.apiMethods = apiMethods;
     }
 
-
     @Override
-    public Observable<ResponseCountry> checkCountry() {
-        return apiMethods.checkCountry("java-ipapi-client");
+    public Observable<ResponseScan> sendNumber(String text, String contents) {
+        return apiMethods.sendNumber(text,contents);
     }
 }
