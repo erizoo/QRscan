@@ -5,14 +5,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,7 +28,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import by.erizo.scan.qrscan.data.ResponseModel.ResponseScan;
 import by.erizo.scan.qrscan.ui.base.BaseActivity;
-import by.erizo.scan.qrscan.ui.base.MvpPresenter;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
@@ -66,7 +60,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Ag0zLolRYqQIQmOTshbiKKJJK6x2");
 
-        if (isNetworkConnected()){
+        if (isNetworkConnected()) {
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -88,8 +82,16 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @OnClick(R.id.with_code_button)
     public void startScanWithCode() {
         System.out.println("");
-        if (codeEdit.getText() != null || !codeEdit.getText().equals("")) {
-            integrator.initiateScan();
+        if (codeEdit.getText() != null && !codeEdit.getText().toString().equals("")) {
+            try {
+                String content = objectMap.get(codeEdit.getText().toString()).toString();
+                isCode = true;
+                integrator.initiateScan();
+            } catch (NullPointerException e){
+                Toast.makeText(this, "Вы ввели неверный код", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(this, "Введите код", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -106,10 +108,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 Log.d("MainActivity", "Cancelled scan");
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                if (isCode){
+                if (isCode) {
                     Log.d("MainActivity", "Scanned");
                     Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                    presenter.sendNumber(codeEdit.getText().toString(), result.getContents());
+                    String content = objectMap.get(codeEdit.getText().toString()).toString();
+                    presenter.sendNumber(content, result.getContents());
                 } else {
                     Log.d("MainActivity", "Scanned");
                     Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
@@ -140,7 +143,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void onSendedNumber(ResponseScan responseScan) {
-        if (responseScan.getStatus().equals("success")){
+        if (responseScan.getStatus().equals("success")) {
             integrator.initiateScan();
         } else {
             Toast.makeText(this, "Номер не отправлен", Toast.LENGTH_LONG).show();
