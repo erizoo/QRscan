@@ -1,4 +1,4 @@
-package by.erizo.scan.qrscan;
+package by.erizo.scan.qrscan.ui;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 

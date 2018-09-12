@@ -1,5 +1,14 @@
 package by.erizo.scan.qrscan;
 
+import android.content.Context;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.inject.Inject;
 
 import by.erizo.scan.qrscan.data.RepositoryManager;
@@ -8,8 +17,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class MainMvpPressenterImpl <V extends MainMvpView> extends BasePresenter<V>
-        implements MainMvpPresenter<V>  {
+public class MainMvpPressenterImpl<V extends MainMvpView> extends BasePresenter<V>
+        implements MainMvpPresenter<V> {
+
+    private final static String FILE_NAME = "content.txt";
+    private final static String TAG = "FILE";
 
     @Inject
     public MainMvpPressenterImpl(RepositoryManager repositoryManager, CompositeDisposable compositeDisposable) {
@@ -28,4 +40,5 @@ public class MainMvpPressenterImpl <V extends MainMvpView> extends BasePresenter
                         )
         );
     }
+
 }

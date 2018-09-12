@@ -12,15 +12,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="18dp"
-            android:text="@string/description" />
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:maxLines="2"
+            android:singleLine="false"
+            android:text="@string/description"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView_second_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/description_second_part"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/code_editText"
@@ -37,12 +59,12 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="53dp"
-            app:srcCompat="@drawable/ic_barcode_scanner" />
+            app:srcCompat="@drawable/logo" />
 
         <Button
             android:id="@+id/with_code_button"

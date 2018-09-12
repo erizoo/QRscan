@@ -2,8 +2,11 @@
     <string name="app_name">QRScan</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="change_code">sdg</string>
+    <string name="history_scan">Просмотр истории</string>
     <string name="edit_code">Введите код доступа</string>
     <string name="with_code">Войти</string>
     <string name="without_code">Войти без кода</string>
     <string name="description">Без кода доступа приложения работает как обычный сканер QR кодов.</string>
+    <string name="description_second_part">Данные никуда не отправляются и никак не обрабатываются</string>
+    <string name="title_activity_show_history_screen">QRScan</string>
 </resources>

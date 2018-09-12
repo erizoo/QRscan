@@ -8,8 +8,9 @@
         android:title="Add">
     </item>
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/history_scan"
         app:showAsAction="never"
-        android:title="@string/change_code">
+        android:title="@string/history_scan">
     </item>
+
 </menu>
