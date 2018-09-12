@@ -79,7 +79,7 @@ public class ShowHistoryScreen extends BaseActivity {
                 StringBuilder sb = new StringBuilder();
                 sb.setLength(0);
                 for (String items: historyList) {
-                    sb.append(items).append("\t\t");
+                    sb.append(items).append(System.getProperty("line.separator"));
                 }
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, sb.toString());

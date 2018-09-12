@@ -45,7 +45,7 @@ import by.erizo.scan.qrscan.utils.Constant;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
-    private static final String FILE_NAME = "history";
+    private static final String FILE_NAME = "history_app1";
     private List<String> historyList = new ArrayList<>();
 
     @Inject
@@ -141,6 +141,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     try {
                         outputStream = openFileOutput(FILE_NAME, Context.MODE_PRIVATE | MODE_APPEND);
                         outputStream.write(resultValue.getBytes());
+                        outputStream.write(System.getProperty("line.separator").getBytes());
                         outputStream.close();
                     } catch (Exception e) {
                         e.printStackTrace();
