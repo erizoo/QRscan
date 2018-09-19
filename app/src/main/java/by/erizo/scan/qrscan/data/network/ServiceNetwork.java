@@ -5,5 +5,5 @@ import io.reactivex.Observable;
 
 public interface ServiceNetwork {
 
-    Observable<ResponseScan> sendNumber(String text, String contents);
+    Observable<ResponseScan> sendNumber(String password, String leadId);
 }

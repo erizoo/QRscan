@@ -3,9 +3,9 @@ package by.erizo.scan.qrscan.di.module;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
-import by.erizo.scan.qrscan.MainMvpPresenter;
-import by.erizo.scan.qrscan.MainMvpPressenterImpl;
-import by.erizo.scan.qrscan.MainMvpView;
+import by.erizo.scan.qrscan.ScannerMvpPresenter;
+import by.erizo.scan.qrscan.ScannerMvpPresenterImpl;
+import by.erizo.scan.qrscan.ScannerMvpView;
 import by.erizo.scan.qrscan.di.ActivityContext;
 import by.erizo.scan.qrscan.di.PerScreen;
 import dagger.Module;
@@ -39,7 +39,7 @@ public class ScreenModule {
 
     @Provides
     @PerScreen
-    MainMvpPresenter<MainMvpView> provideMainMvpPresenter(MainMvpPressenterImpl<MainMvpView> presenter) {
+    ScannerMvpPresenter<ScannerMvpView> provideScannerMvpPresenter(ScannerMvpPresenterImpl<ScannerMvpView> presenter) {
         return presenter;
     }
 }

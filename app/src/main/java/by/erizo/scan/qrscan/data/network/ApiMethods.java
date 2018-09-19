@@ -8,11 +8,12 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiMethods {
 
-    @Multipart
-    @POST("{number}")
-    Observable<ResponseScan> sendNumber(@Path("number") String text,
-                                        @Part("leadid") String contents);
+
+    @POST("mobile-app-call")
+    Observable<ResponseScan> sendNumber(@Query("password") String password,
+                                        @Query("leadid") String contents);
 }

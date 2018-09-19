@@ -17,7 +17,7 @@ public class ServiceNetworkImp implements ServiceNetwork {
     }
 
     @Override
-    public Observable<ResponseScan> sendNumber(String text, String contents) {
-        return apiMethods.sendNumber(text,contents);
+    public Observable<ResponseScan> sendNumber(String password, String leadId) {
+        return apiMethods.sendNumber(password,leadId);
     }
 }

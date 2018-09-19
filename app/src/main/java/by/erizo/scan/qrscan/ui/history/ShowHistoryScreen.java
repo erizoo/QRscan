@@ -2,7 +2,6 @@ package by.erizo.scan.qrscan.ui.history;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
@@ -32,7 +31,7 @@ public class ShowHistoryScreen extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.show_history_screen);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -78,7 +77,7 @@ public class ShowHistoryScreen extends BaseActivity {
                 sharingIntent.setType("text/plain");
                 StringBuilder sb = new StringBuilder();
                 sb.setLength(0);
-                for (String items: historyList) {
+                for (String items : historyList) {
                     sb.append(items).append(System.getProperty("line.separator"));
                 }
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
@@ -91,13 +90,6 @@ public class ShowHistoryScreen extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-
-
-    @Override
-    protected int getContentView() {
-        return R.layout.show_history_screen;
     }
 
 }

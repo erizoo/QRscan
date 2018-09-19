@@ -29,7 +29,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getContentView());
         unbinder = ButterKnife.bind(this);
         screenComponent = DaggerScreenComponent.builder()
                 .screenModule(new ScreenModule(this))
@@ -37,8 +36,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
                 .build();
 
     }
-
-    protected abstract int getContentView();
 
     public ScreenComponent getScreenComponent(){
         return screenComponent;

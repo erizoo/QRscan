@@ -31,6 +31,11 @@
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
+            android:name=".QrCodeScannerActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
             android:name=".ui.history.ShowHistoryScreen"
             android:label="@string/title_activity_show_history_screen"
             android:theme="@style/AppTheme.NoActionBar" />
