@@ -4,6 +4,7 @@
     <string name="change_code">sdg</string>
     <string name="history_scan">Просмотр истории</string>
     <string name="edit_code">Введите код доступа</string>
+    <string name="registration">Зарегистрироваться</string>
     <string name="with_code">Войти</string>
     <string name="without_code">Войти без кода</string>
     <string name="description">Без кода доступа приложения работает как обычный сканер QR кодов.</string>

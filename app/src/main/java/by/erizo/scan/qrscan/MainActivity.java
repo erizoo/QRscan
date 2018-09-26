@@ -3,6 +3,7 @@ package by.erizo.scan.qrscan;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -51,6 +52,17 @@ public class MainActivity extends BaseActivity {
                 Intent intent = new Intent(this, QrCodeScannerActivity.class);
                 intent.putExtra("password", password.getText().toString());
                 intent.putExtra("check", true);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Введите код", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        findViewById(R.id.registration_button).setOnClickListener(v -> {
+            if (password.getText() != null && !password.getText().toString().equals("")) {
+                String url = "http://pan.ac/" + password.getText();
+                Intent intent = new Intent(this, WebViewActivity.class);
+                intent.putExtra("URL", url);
                 startActivity(intent);
             } else {
                 Toast.makeText(this, "Введите код", Toast.LENGTH_LONG).show();

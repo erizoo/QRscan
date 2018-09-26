@@ -1,9 +1,12 @@
 package by.erizo.scan.qrscan;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +15,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
+import android.webkit.WebView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
@@ -45,6 +55,7 @@ public class QrCodeScannerActivity extends BaseActivity implements ZXingScannerV
     private String result;
     private boolean check = false;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +75,60 @@ public class QrCodeScannerActivity extends BaseActivity implements ZXingScannerV
                 requestPermission();
             }
         }
+        if (check) {
+            showAlertDialog();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    private void showAlertDialog() {
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setMessage("Введите номер штрихкода");
+        alertDialog.setCancelable(false);
+
+
+        final EditText input = new EditText(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Отправить код",
+                (dialog, which) -> {
+                    if (input.getText().toString() != null || !input.getText().toString().equals("")) {
+                        presenter.sendNumber(password, input.getText().toString());
+                    }
+                    dialog.dismiss();
+                    showAlertDialog();
+                }
+        );
+        alertDialog.setOnKeyListener((arg0, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                finish();
+                alertDialog.dismiss();
+            }
+            return true;
+        });
+
+        Rect displayRectangle = new Rect();
+        Window window = this.getWindow();
+        window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
+
+
+        Objects.requireNonNull(alertDialog.getWindow()).setLayout((int) (displayRectangle.width() *
+                2f), (int) (displayRectangle.height() * 0.3f));
+        WindowManager.LayoutParams wmlp = alertDialog.getWindow().getAttributes();
+
+        wmlp.gravity = Gravity.TOP | Gravity.LEFT;
+        wmlp.x = 20;   //x position
+        wmlp.y = 100;   //y position
+        alertDialog.getWindow().setAttributes(wmlp);
+
+        alertDialog.show();
     }
 
     private boolean checkPermission() {
